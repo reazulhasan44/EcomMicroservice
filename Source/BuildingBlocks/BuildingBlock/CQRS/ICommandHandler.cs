@@ -16,5 +16,6 @@ namespace BuildingBlocks.CQRS
         where TCommand : ICommand<TResponse>
         where TResponse : notnull
     {
+
     }
 }
