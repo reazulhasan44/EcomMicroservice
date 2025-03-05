@@ -24,7 +24,7 @@ namespace Catalog.API.Products.CreateProduct
                 ImageFile = command.ImageFile,
                 Price = command.Price
             };
-            return new CreateProductResult(product.Id);
+            return new CreateProductResult(Guid.NewGuid());
         }
     }
 }
