@@ -1,22 +1,36 @@
+using BuildingBlocks.Behaviors;
+using BuildingBlocks.Exceptions.Handler;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// carter configuration
-builder.Services.AddCarter();
+
 
 // mediatr configuration
 var assmebly = typeof(Program).Assembly;
 builder.Services.AddMediatR(config => {
     config.RegisterServicesFromAssembly(assmebly);
+    config.AddOpenBehavior(typeof(ValidationBehavior<,>));
 });
+
+// fluent validation configuration register all validation 
+builder.Services.AddValidatorsFromAssembly(assmebly);
+
+
+// carter configuration
+builder.Services.AddCarter();
 
 // marten configuration
 builder.Services.AddMarten(opts => {
     opts.Connection(builder.Configuration.GetConnectionString("Database"));
 }).UseLightweightSessions();
 
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
 
 app.MapCarter();
+
+app.UseExceptionHandler(options => { });
 
 app.Run();
