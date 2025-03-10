@@ -11,6 +11,7 @@ var assmebly = typeof(Program).Assembly;
 builder.Services.AddMediatR(config => {
     config.RegisterServicesFromAssembly(assmebly);
     config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+    config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 });
 
 // fluent validation configuration register all validation 
