@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ordering.Domain
-{
-    internal class GlobalUsing
-    {
-    }
-}
+﻿global using Ordering.Domain.Exceptions;
+global using Ordering.Domain.Abstractions;
+global using Ordering.Domain.ValueObjects;
+global using Ordering.Domain.Enums;
