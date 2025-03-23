@@ -8,6 +8,11 @@
             Value = value;
         }
 
+        /// <summary>   
+        /// "of" Static methods belong to the record itself
+        /// not to instances of the record 
+        /// and are used to create CustomerId
+         
         public static CustomerId Of(Guid value)
         {
             ArgumentNullException.ThrowIfNull(value);
