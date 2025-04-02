@@ -8,7 +8,7 @@ namespace Ordering.Application.Orders.Commands.CreateOrder
         {
             var order = CreateNewOrder(command.Order);
             dbContext.Orders.Add(order);
-            dbContext.SaveChangesAsync(cancellationToken);
+            await dbContext.SaveChangesAsync(cancellationToken);
 
             return new CreateOrderResult(order.Id.Value);
         }
